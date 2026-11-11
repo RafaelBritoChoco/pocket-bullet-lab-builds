@@ -1,2 +1,19 @@
-# pocket-bullet-lab-builds
-APKs de teste do Pocket Bullet Lab (instale/atualize pelo Obtainium)
+# Pocket Bullet Lab — builds de teste
+
+Este repositório contém **apenas os APKs de teste** do Pocket Bullet Lab, publicados como releases. O código-fonte fica em um repositório privado.
+
+## Instalar e atualizar no Android
+
+1. Instale o [Obtainium](https://github.com/ImranR98/Obtainium/releases/latest) (`app-arm64-v8a-release.apk`).
+2. No Obtainium, use **Adicionar app** com `https://github.com/RafaelBritoChoco/pocket-bullet-lab-builds`.
+3. Abra o Obtainium quando quiser e toque em **Atualizar** se houver versão nova.
+
+Os APKs são assinados sempre com a mesma chave, então as atualizações mantêm o progresso salvo.
+
+## Para quem publica
+
+Não envie arquivos manualmente aqui. As versões são criadas pelo script `scripts/release/update-android.ps1 -ExportOnly -Publish` do repositório do jogo; veja `docs/RELEASING.md` lá.
+
+## Créditos
+
+Sprites do Sunnyside World Asset Pack (Daniel Diggle). Os assets não são redistribuídos separadamente: este repositório contém só o jogo compilado.
