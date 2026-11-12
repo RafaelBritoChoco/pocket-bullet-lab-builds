@@ -12,7 +12,12 @@ Os APKs são assinados sempre com a mesma chave, então as atualizações mantê
 
 ## Para quem publica
 
-Não envie arquivos manualmente aqui. As versões são criadas pelo script `scripts/release/update-android.ps1 -ExportOnly -Publish` do repositório do jogo; veja `docs/RELEASING.md` lá.
+Não envie arquivos manualmente aqui. As versões chegam de dois jeitos:
+
+- **Automático (padrão):** todo push em `main` ou `round/**` no repositório do jogo roda o GitHub Actions, que gera o APK e o envia para a branch `incoming` daqui; o workflow `release-incoming.yml` cria o release. Funciona com o PC desligado.
+- **Pelo PC:** `scripts/release/update-android.ps1 -ExportOnly -Publish`.
+
+Veja `docs/RELEASING.md` no repositório do jogo.
 
 ## Créditos
 
