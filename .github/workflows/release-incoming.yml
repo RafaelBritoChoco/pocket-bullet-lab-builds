@@ -1,0 +1,28 @@
+# Recebe o APK enviado pelo GitHub Actions do repositório privado (branch "incoming",
+# sobrescrita a cada build) e cria o release que o Obtainium lê.
+name: Criar release do APK recebido
+
+on:
+  push:
+    branches: [incoming]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: incoming }
+      - name: Criar release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=$(jq -r .tag release.json)
+          if gh release view "$tag" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "Release $tag já existe."; exit 0
+          fi
+          gh release create "$tag" ./*.apk --repo "$GITHUB_REPOSITORY" --target main \
+            --title "$(jq -r .title release.json)" --notes "$(jq -r .notes release.json)" --latest
